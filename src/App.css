@@ -1,38 +1,147 @@
-.App {
-  text-align: center;
+body {
+  background-color: rgb(235, 236, 247);
+  font-family: Arial, sans-serif; /* Use a common font for better compatibility */
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.chat-container {
+  border: 1px solid #adadad;
+  border-radius: 10px;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  justify-content: space-between; /* Align side box and messages container */
+  height: 90vh;
+  margin: 10px auto;
+  width: 90%; /* Adjust width for smaller screens */
+  max-width: 800px; /* Limit maximum width for better readability on larger screens */
+  background-color: #a4b4cf;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.side-box {
+  color: black;
+  width: 200px; /* Fixed width for the side box */
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #ffffff;
+  overflow-y: auto;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.side-box ul {
+  padding: 0;
+  list-style: none;
+}
+
+.side-box li {
+  padding: 10px 0;
+  border-bottom: 1px solid #ddd; /* Line after each name */
+  cursor: pointer;
+}
+
+.side-box li:last-child {
+  border-bottom: none; /* Remove line after last name */
+}
+
+.messages {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.message-container {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+}
+
+.message {
+  max-width: 70%;
+  padding: 10px;
+  border-radius: 10px;
+  margin-bottom: 5px;
+}
+
+.sender-message {
+  background-color: #dcf8c6;
+  align-self: flex-end;
+}
+
+.receiver-message {
+  background-color: #fff;
+  align-self: flex-start;
+}
+
+.input-container {
+  padding: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.input {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 20px;
+}
+
+.send-button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.send-button:hover {
+  background-color: #0056b3;
+}
+
+/* Message status indicators */
+.message-status {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  margin-left: 5px;
+}
+
+.message-status.seen {
+  background-color: #007bff; /* Double blue ticks */
+}
+
+.message-status.sent {
+  background-color: #888; /* Single gray tick */
+}
+
+/* Responsive styles for smaller screens */
+@media screen and (max-width: 480px) {
+  .chat-container {
+    flex-direction: column; /* Switch to column layout on smaller screens */
+    align-items: center; /* Center items vertically */
   }
-  to {
-    transform: rotate(360deg);
+
+  .messages,
+  .side-box {
+    width: calc(100% - 40px); /* Full width on smaller screens */
+    margin: 0 20px; /* Adjust margin */
+  }
+
+  .input-container {
+    flex-direction: column; /* Display input and button vertically */
+    align-items: stretch; /* Stretch items to fill container */
+  }
+
+  .input {
+    width: 300px; /* Full width input and button */
+    margin: 5px 0; /* Add space between input and button */
+  }
+  .send-button {
+    width: 320px; /* Full width input and button */
+    margin: 5px 0; /* Add space between input and button */
+  }
+
+  .side-box {
+    width: calc(100% - 40px); /* Same width as the lower input box */
+    margin: 0 20px 10px; /* Adjust margin for spacing */
   }
 }
